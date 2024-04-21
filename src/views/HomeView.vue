@@ -89,7 +89,7 @@
         
       </swiper>
     </div>
-    <div id="about" class="about">
+    <div id="about" class="about" :data-lang="myLanguage">
       <div>
               <input type="checkbox" id="chosse">
               <div>
@@ -131,9 +131,9 @@
                         {{lannguage.meansContent}}
                       </p>
                   </div>
-              <label class="see"   for="chosse">{{lannguage.seeLess}}</label>
+              <label :data-lang="myLanguage" class="see"   for="chosse">{{lannguage.seeLess}}</label>
              </div>
-             <label class="see"  for="chosse">{{lannguage.seeMore}}</label>
+             <label :data-lang="myLanguage" class="see"  for="chosse">{{lannguage.seeMore}}</label>
           </div>
           <div>
             <img src="../assets/images/aboutup.svg">
@@ -168,9 +168,9 @@
             {{lannguage.fourContent}}
           </p> 
         </div>
-          <label class="see"  for="forsee"> {{lannguage.seeLess}}</label>
+          <label :data-lang="myLanguage" class="see"  for="forsee"> {{lannguage.seeLess}}</label>
         </div>
-        <label class="see"   for="forsee">{{lannguage.seeMore}}</label>
+        <label :data-lang="myLanguage" class="see"   for="forsee">{{lannguage.seeMore}}</label>
       </div>
       <div>
         <img src="../assets/images/aboutdown.svg">
@@ -251,12 +251,12 @@
       <swiper
   
 
-        :slidesPerView="3"
+        :slidesPerView="2"
         :spaceBetween="30"
         :pagination="{ clickable: true }"
         :modules="moduless"
         :breakpoints="{
-          768: { slidesPerView: 3, spaceBetween: 20 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
           400: { slidesPerView: 1, spaceBetween: 20 }
         }"
         class="content revContent"
@@ -290,15 +290,7 @@
             <span>{{ lannguage.review3Role }}</span>
           </div>
         </swiper-slide>
-        <swiper-slide :data-lang="myLanguage" class="componnent">
-          <img src="../assets/images/collectionstars.svg">
-          <p>{{ lannguage.review6 }}</p>
-          <div>
-            <img class="cli"  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8QEBAPDw8PDQ8NEA8QDw0NDw8NDQ8PFRUWFxURFhYYHSghGBolGxUVIjEhJTUrLi4uFyAzOTMsOCgtLisBCgoKDg0OFQ8QFTcfHR0tKy0tLS0xLysrNy0tLS0tLS8rLisrLS0tKysrLS0rKy0tKystLS0rLS0tKy0rLS0tLf/AABEIALcBFAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwABBAUGB//EADwQAAIBAgQEBQIEAwYHAQAAAAECAAMRBBIhMQUTQVEGImFxgTKRUqGx8AeS0RQjM0KCwSRDU2KisuEW/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QAIhEBAQEAAgICAgMBAAAAAAAAAAECAxEhMQQSQVEjcfAi/9oADAMBAAIRAxEAPwBwEMLIojAJxdVBYQWEBCAhFKsYqy1ENRCqVYdpYEICBQWWBCCwrSKC0MCEBCywAtLCwwIQEBYWXljLS7QFZZMkb++kvLCk5ZWWOIktCEZZMsbaUVgKtJaMyyssBREG0daCRAURBKxxEorAzkRZWaSIsiEZ2SLKzSwg5ZRnyR1KleWFmrD09YStFHAggaSTtYPD+Qf0km+me68YBDUSKIQEw0ICEFlKIwCFRRGASgIYgS0ICQCGBIKAhASwIYEKECFaXaFaAIEILLtCAgec8UeKFwbU6KUjXxFceRMwRFJIVc56An9DNmFGIKjn1AXYXZEpvTpqNzlUgOyj8QLdNOk874z8KPjavPosi1ggp8qoxptUUHQBWXfU7XBtPO4bgHGaRFOk1ZAmawSqy00KhiQBcWuFbYa7dddSR3zjWL5z2+h1aGxGpNtCVYtpc5bbkDW63BGulmB5vEKtamC1OtUpNa6XDGkTbQMlQeYH/t19Z4vFPxpSUNeq2YeY06qtcAZtw17AP7am0yU+AcUrlkYVjbLmFaqEU5hdd2Oa4GlvSOpfy3rffj6Povg/xQMaGpVVWliaQ8yKb06gG7pf8x0uN56UrPlXhfC08BWNapVp1q1MFVXDtzUTOCPqYAEnbcW167+04LxStUrKrurK+csLqQpABCIR2uNTvdtLAGYtnfTnODVzdO8RKIjiIBErkVaS0MiS0IXaVljbSrQFZYJWOKwSICSsArHlZRWBmKQcs05JXLhCFSaKJsYJWSWJXZoY2y2knF5hkmu06c8QxKAhqJlpEEaspRCEAhCAlCGogEBCAkAhgSCAQgJAIQEooCHaQCHaFDaFllgReJbKjnspOm9usizzY5OIcqjAaggjLY5CfxFQLEXA1AGx95x8DnxQOIrvbDgk06NPSmUVmKsbat9RtfoZiSo+JpPSRwKmIxBpuW2WmM11U20JVSB7jSej8OU1FLkgWFItTt+HKSLflPPz7viR9fLM/HeHqBTIKX0B5DhPuBpOF4kxlEU2/vXIdQgp02PnW5IWw3FyTbbWdbH+Hf8AiKPNxNTIj3SkTcMb3Atb3mDxpwbNVw9RPIMhRyt0IDGwYEba2HzOU6799M37SV4rB1wvMGU0y+UICRfRrjXtv959D8NHzUF1uSSCS4OUK3c9gNLdDrtPD8c4KcKaBFTm85ajrvnUq5Uqdde/tee28DjM6HYJTqkWAAN8ovue/v6i1j6MsW/x2vYkQCI8iHRWna7KWOc5hmYWpgLqLddT9p3zm6vUfL1rqdsZEgENgLmxuAzAG97gEgG/WVaZUBElowCVaQLIglY60mWFJyy8kbll5YQgpKKx5WCVlQgrFOJqIi2EqMZEkayyQjAIayhDAlUSiGIIhqJASiGBKWGBCiAhgSrQ1ECAQxIBCAgUBCtIBCtAqZ+KVUSjVaowRAjXY9NIvGcSp0hc3bQHT6bE954jxFi8Zi6tOjymp0TU8qD+8dyNOYUW5sL3sZK9HFxatlviNvEeGUaVAKgGatULM91LGo+pa4J0+k20toR/mE5/C+L/ANkqFKhLLVyOrXubk2a5O5ve89XiPDGLxNCnTUCiUKHNWNhbXOMqnsSP6axvij+HX9pw1HkVFTFYemFLsCqVzu198pJJPXeTfF9o9HJ8jOfV8vL4rimKqYiqcPRFcBcgxDE5EJF7KAQfczz/AIpxvEBykq1VbJ5jy7W011OhNovA8WrYDm4PFU6lNsxJH0VFJFsw7jTeZ+H0auNrDCUC+IrV3C81vop0zuWtsLTjMXN9M3mzrPfZ+KxfPqId8i5Ta5Ba+ZrW1I16a6C28+oeEuGcnDqWH95UGYny6IdVXTTbX5nhPCHAXfELSqIQKfmrZgfKF/yn50tvqSDtPrB+06YjHPqzMz+xHDVP+m/8pmWpSU6lQT6qCZH8Y4IHSoptrmArMpPUggEETNR41hqz5UrKztchbMpPXTMBedOunj7aMso+8aw0+YmpTzC235yNL/duolgR+KxBqMXYKCQBZBYaX199YsRQNpLQ7SwJAGWTLGWklCisEiNIgMIQlhAIjiIDSjOyyS2khHMWMEWIayhghiAsYJFGojVEWsaJBYhqIIhrKCEIShLEC5n4niVpUqlRjlCqbnsOv5TTON4lpNVFLDpu7c1zr9FMjy/JNvv3kvp24M/bkzKw4djWFOoyZVCKKSNoSoGlRh+I9B0Hreeo8KUhnqkAXVUF7a+Yn+kxUstUBlGV1sCgtqe373t3E7nhxVHOC28ppgkG9zlJJ/PT0t3m8vV8rXWLOnXI0g06ltO8ZaDknR8pzuMcJwmIU8+hQr2H/NpI5H8wnnKHBVw7BsHSpYZTY3pIqad7DrbvPTcR2C/iNvjrLVbm0liy9ORgMHkvceZst2/zGw0v30mHxXUanhKoF1asFoKw6GqQl/gEn4nfZL1E7XZf/EzznjJKjCituamHqtVqoGC1GGVlT7ZmOvpMWTPmumZrd6j5wXrmtUqUC6LzVpmnWby8lBayL8Wnq/D9AvWpg7Uxnb/SNPzInna+MqIzkAlFsclQFawFtSO4/d57PwSnMpvXANqllW+nlXUn7kfaScmdTuU3xaxerHoGGkXaNcb+8WZPwBENYIhrIq7SS5UIuS0khgUYDQjAaULMB4ZizAU0uUZcDlCGsERiwDEYsARiwDWMUQFEYJAQhgShClFiFBEKBcnE8JlNJurIQR1uDfbt5hNGAo53A3A1M3eIEAQVCQBTuSSbAAjX48ol67jpw7+vJHlOJqyoay7gWI2Vzp5bnubD0vfS2vZ8AGo2Gd6oK1Hq3dTe6nIpsfve3S9uk8N/+zTE5hh8O7Jhk5tXmutIEDewsb9dt7zVwf8Aizg6dqf9nqIKjgsSzGzHKpI8muxOuXeM56vb1fI+RnXD9J5vb6pDA0mejikdVdGDI4DKw2IOxmhDpOr5jLWS7r6ayramOI1JgVFgYT9ObYq97naeD4xkxWJqFcYaWKpBaVlOamyqSwsugYec6ie/qJcZTsSLj06zynHPDL11vRSlWyvlQOAlbKBoA/fftPPzzV9PV8fWZ3Lf9/bx3EcXUq8zDVUp89B5a9Oxp1PTKfpax2heA+KV6eKGFVaj0KhOZWHlw7hWOdW7abddOu+TitOiozOalOpTIGUsSxI9TrfSdT+GIOIxNeozeWjTyrfVs1UmxPwh+88vFbb4j288kx5r6JSotUYKBcsf2TF4igUYjUgEgNYgGTw9ejia9SqSEqCyH6gLHsP3pOpxrH06iqqNm82ZjYi1hoNff8p9DeJn1e3ysat/HTjSwZUqcmxgyQQZd4BSpV5RaVBXi2aQmKZoVZMW5lXgs0IAmSCTKhWBY1YsRiwGCMWLEYsBiiMEBYxZFGsIShLEAhCEERlJbkDuQIHW4ZTyqG6ub/6dhMXjHH0FocmvkyYkMrCq2ROXpmufkD7ztKBbQWGw6fE8H4qqZsTUF1bl5QiVGsuqhrbG2pP3jn3cY8N/GxOTk8ubw3gPDVpVHWnSFM5QzrW5l76DQkkDXpOVxLwngaRGSj/M7t+pnZqLWdAxw1KkwtZxUDn4ssyYyrUZqYZCqlR5mbMXa4uw9Jwxy2+K9HLw5n/Ue0o41aS06SgKqIihRoAAANp28LXuo+J80oVSWVQWIUAAsSWIHc9Z9A4aDlHtPXnXbw6z06dM3J9JbrE4Rvq9/wDaHWczbDJi1O4/KFgyFp5rEhMzWGpNu0ldriDSfJTJ66kSK+L+J67VbvywhDEMQbj0E2fwyVsPzMSw/wAeqtPLrY0qYv8A+zn+Weo8VeGa1QE4RUK1aq1SHIUKCtmB9NzpMq8O5CJSGoQb2tdjqxt0uSZ5cYuLXt5OSbzP29Y9tCuquMynraLM5fCcWQpRj5VIsT0J0sPm06ZM6V5lGVKJlEwCvIDAvIDKGEwLyi0AtAJjFMZGaATAsmLZpGaLZoQJMkEmVCkCMWLWMWAxYwRaxgkU1YxYtYxYBgwhBWEIBCPwhs6k94gQhA9HnBHYDoNp858TVko46vTdVcVhTqqpIVjmWxy+t1M9hhsZYWb7zjeKuE08TUoYpRmrYZaiZAbZke2vutj/ADmXlzOTPS8G7x77cHC06QU2fE1LknlvUqNk62BHSObh9Nyr86ozU1ISkQzADtc7agTpjBcrDkn/ABahHlGyp294zgWEzMbjpOeOLqu3JzfaOTwzANzNuonvMIlhM2FwQDbdZ01SwnozOnk1rtWG6+8Kqeh2MCm9iZTt3mmWd9DlPup7zNjKnlCjqLn2jsS3lvf6NQfTa0yVzofQL+sxpvLXh62ZOxUWP23nH4rQuCbTVhHs4B2Y5T87Ga8ThwdDtM+4vqvG5SKtCnewcuXFyAykbH7TvowsLa6DU7/M4PEqZNWpU2ykLTA6KOv6zsYNSKaA7hRf3mVOJgkyEwbypVkyryiYBaAZaATBvBJgWWgFpRMWWgWzQCZRMAtCqJkgEyoFpGLFrGLFUxYwRYhrIHLDEUI0QGLCEAQlgGJYlCWIBQoMuBYo57DtrOrhMKFOnYzJw5bkn2nZtYj2M65nhz1fIKSaxj7GVQ3MKvt8zTLONzAaMMAwMVY7iZ9Mrd/1jeIaEHvMpe2f0BmNN5KJnQXFh1sxs467ZvWYDKnOVrpmxVAMSADqevbvHyEwSYFkwCZRgmVFkwDLMWTAsmATKJgXgWTALSExRMKsmCTKJgM0gomXFFpJFaFjFi1jFloYIawFhrAYIwRQjAYDBDUxYhCFNEuAIQMiLvLvBvJeUdThQ0J7t/SdU7/BnN4aLKvqb/mf6Tonf4nbPpyvsFA6mHVaKpnUyYltJQF5Ty6YluNIRh4il6ZPac9Te/rmnVYXVh6Ti0HsSOzETnp0i0bQeoEl5S7AdhaVeYaWYDGWxgEwijKJlEwWMqLc6RTGWzRTGBZMAmQmAWgRjAMhMWTIqyYDGQmLcyKEmSLJkhXQWMWABCBlQ1YYigYYMBghiLBhgwGiEIsGGDCmXkvBvLvIg5LwM0maB3MAfKnsP0/+zf1+BOfgNl9h+gm4HU+wneenKlofNAxp0lg+aKxzbSh1I6QjAobQzAxO1m95xK2lRh6gzr4/QZvwm/xONiGvUc9De0xprJrH9W/Un/eDeAMQX3AuoGo3PvJec21kwCZGMAmERjAJkMBjKi2MWxkYxRMCyYBMhMAwsQmCTIYJMiqZotjLMBpAljLl5ZJGnUkkkmmBCMWVJKDBhiSSRRgwwZJIFiGJUkC5JJIHcwH0r7CbFO8kk7T05FX1mfiDbSSQNGG+mG0uSBhxPUdDPOOxuR+G4kkmNN5HQ3b2T9I0iXJMqAiCVkkhAEQCJJIQthFkSSQoCIJEkkECYtxJJI0WYJkkkUBkkkgf/9k=">
-            <p>{{ lannguage.review6Author }}</p>
-            <span>{{ lannguage.review6Role }}</span>
-          </div>
-        </swiper-slide>
+       
         <swiper-slide :data-lang="myLanguage" class="componnent">
           <img src="../assets/images/collectionstars.svg">
           <p>{{ lannguage.review4 }}</p>
@@ -751,11 +743,17 @@ export default {
   line-height: 30px;
   position: relative;
   bottom: 0px;
-  left: 25px;
+  left: 22px;
   border-radius: 4px;
   display: inline-block;
   cursor: pointer;
   margin-top: 10px;
+  
+}
+.see[data-lang="Ar"] {
+ 
+  left: 80%;
+ 
   
 }
 .seeLess{
@@ -799,12 +797,16 @@ export default {
 }
 .about >div:first-child  >div p{
   font-size: 17px;
-  //background-color: rgb(108, 244, 96);
+ // background-color: rgb(108, 244, 96);
   font-weight: 600;
   text-transform: capitalize;
   line-height: 40px;
   
       
+}
+.about[data-lang="Ar"] >div:first-child  >div p{
+  font-size: 22px;
+    
 }
 
 //the about content "image"
@@ -1586,6 +1588,9 @@ export default {
 /* media => phone ultra*/
 @media(max-width:450px){
 //for arabic style
+.see[data-lang="Ar"] {
+ left: 70%;
+}
 .contInput[data-lang="Ar"] {
   margin-top:0px;
 }
