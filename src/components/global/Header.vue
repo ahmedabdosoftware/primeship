@@ -28,7 +28,6 @@
         <div  class="contLang"  :lang="myLanguage">
             <img  id="lanImage" class= "lanImage" src="../../assets/images/lan.png">
             <select   v-on:change="lannguageChossed()" id="language-change"  class="language-change">
-            <option  value="none"> cho</option>
             <option  value="En"> Eng</option>
             <option  value="Ar">Ar</option>
             </select>

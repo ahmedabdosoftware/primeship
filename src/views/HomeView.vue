@@ -2,7 +2,7 @@
    <!-- home view -->
    <div id="home" class="home">
     <!-- Background section => disigned by canva  -->
-    <div class="Background">
+    <div :data-lang="myLanguage" class="Background">
       <div :data-lang="myLanguage"  class="textCont">
         <p id="back">
           {{lannguage.textBackground}}
@@ -52,6 +52,7 @@
           clickable: true,
         }"
         :modules="modules"
+        
         class="mySwiper"
   >
       <swiper-slide class="slidePicA slidePic">
@@ -131,9 +132,9 @@
                         {{lannguage.meansContent}}
                       </p>
                   </div>
-              <label class="see"   for="chosse">{{lannguage.seeLess}}</label>
+              <label  :data-lang="myLanguage" class="see"   for="chosse">{{lannguage.seeLess}}</label>
              </div>
-             <label class="see"  for="chosse">{{lannguage.seeMore}}</label>
+             <label  :data-lang="myLanguage" class="see"  for="chosse">{{lannguage.seeMore}}</label>
           </div>
           <div>
             <img src="../assets/images/aboutup.svg">
@@ -168,9 +169,9 @@
             {{lannguage.fourContent}}
           </p> 
         </div>
-          <label class="see"  for="forsee"> {{lannguage.seeLess}}</label>
+          <label  :data-lang="myLanguage" class="see"  for="forsee"> {{lannguage.seeLess}}</label>
         </div>
-        <label class="see"   for="forsee">{{lannguage.seeMore}}</label>
+        <label  :data-lang="myLanguage" class="see"   for="forsee">{{lannguage.seeMore}}</label>
       </div>
       <div>
         <img src="../assets/images/aboutdown.svg">
@@ -251,14 +252,10 @@
       <swiper
   
 
-        :slidesPerView="3"
+        :slidesPerView="'auto'"
         :spaceBetween="30"
         :pagination="{ clickable: true }"
         :modules="moduless"
-        :breakpoints="{
-          768: { slidesPerView: 3, spaceBetween: 20 },
-          400: { slidesPerView: 1, spaceBetween: 20 }
-        }"
         class="content revContent"
       >
         <swiper-slide :data-lang="myLanguage" class="componnent">
@@ -322,8 +319,8 @@
        
 
       </swiper>
-      </div>
-      <div  id="contact" class="footer">
+    </div>
+    <div  id="contact" class="footer">
          <div>
           <h2>{{ lannguage.contactUsText }}</h2>
           <img src="../assets/images/GroupIcons.svg">
@@ -521,7 +518,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 
-
 .home{
   height: 1000px;
   display: flex;
@@ -529,6 +525,7 @@ export default {
   justify-content: center;
   
 }
+  $main_color:white;
 .Background{
   height: 100vh;
   width: 100%;
@@ -537,11 +534,18 @@ export default {
   background-image: url("../assets/images/finaly.jpeg");
   background-size: 100% 100%;
   //overflow: hidden;  
+  display: flex;
   position: relative;
   img{
     width: 100%;
     height: 100%;
   }
+}
+.Background[data-lang="Ar"] {
+  background-image: url("../assets/images/backAra.jpeg");
+  display: flex;
+  justify-content: flex-end;
+  padding-right:20px;
 }
 .footerBckground{
   position: absolute;
@@ -560,7 +564,7 @@ export default {
     align-content: center;
     width: 25%;
     height: 100%;
-    background-color:white;
+    background-color:$main_color;
     box-shadow: 0px 1px 4px 3px #00000040;
     border-radius: 4px 0px 0px 0px;
 
@@ -714,22 +718,24 @@ export default {
 
 //the about content "text"
 .about >div:first-child{
-  //background-color:blue;
+ // background-color:blue;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
   position: relative;
-
-  }
- // eddit just for terms
+  align-content: flex-start;
+  padding-top:40px ;
+  
+  
+}
+// eddit just for terms
 .terms >div:first-child{
   //background-color:rgb(155, 161, 156);
+  padding-top:0px ;
   align-content: flex-start;
   order: 2;
   }
 .about >div:first-child >div:not(.counterOfReadMore){
   width: 100%;
-  //height: 222px;
  // background-color: rgb(244, 96, 121);
   text-align: start;
   padding-left: 25px;
@@ -757,6 +763,11 @@ export default {
   cursor: pointer;
   margin-top: 10px;
   
+}
+.see[data-lang="Ar"]{
+  position: relative;
+  left: 86%;
+  //bottom:80px;
 }
 .seeLess{
   left: 5px;
@@ -793,12 +804,12 @@ export default {
   color: #254178;
 }
 .about >div:first-child  >div h3{
-  font-size: 22px;
+  font-size: 25px;
   margin-bottom: 0px;
   padding-top: 5px;
 }
 .about >div:first-child  >div p{
-  font-size: 17px;
+  font-size: 22px;
   //background-color: rgb(108, 244, 96);
   font-weight: 600;
   text-transform: capitalize;
@@ -834,7 +845,7 @@ export default {
 
 .service{
   width: 100%;
-  height: 700px;
+  height: 720px;
  // background-color: aqua;
   display: flex;
   flex-wrap: wrap;
@@ -859,23 +870,28 @@ export default {
 }
 //swiper
 .swiper {
-  width: 100%;
+  width: 80%;
   height: 85%;
-  margin-left: auto;
-  margin-right: auto;
+  //background-color: red;
+   margin-left: 100px;
+   margin-top: 20px;
+   margin-bottom: 20px !important;
+  
 }
 
 .swiper-slide {
+  //background-color: rgb(97, 89, 89);
   text-align: center;
   font-size: 18px;
   height: calc((100% - 30px) / 2) !important;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
   >img{
-    width: 90%;
+    width: 100%;
     height: 100%;
-    margin-right: 70px !important;
+    //margin-right: 70px !important;
   }
 }
 
@@ -1087,7 +1103,7 @@ export default {
 
 .reviews{
   width: 100%;
-  height: 380px;
+  height: 400px;
   //background-color: rgb(23, 141, 48);
   display: flex;
   flex-wrap: wrap;
@@ -1674,27 +1690,7 @@ export default {
           padding-right: 40px;
         }
       }
-  /* service section */
-  .service{
-  height: 600px;
-  align-content: center;
-  margin-top: 0px;
-  >div:first-child{
-     height: 15%;   
-  }
-}
-  .swiper-slide {
-    height: 150px !important;
-    >img{
-    width: 95%;
-    margin-right: 0px ;
-    margin-left: 10px ;
-  }
-  }
-  .swiper {
-    height: 60%;
-}
-
+  
 /* about section */
 
 .about{  
@@ -1774,6 +1770,16 @@ export default {
 
 .contInput  button{
 } 
+//swiper
+.swiper {
+  margin-left: 20px;
+  height: 65%;
+}
+.swiper-slide {
+  justify-content:center;
+  width: 50% !important;
+ 
+}
 
 /* how to send section "textCont" */
 
